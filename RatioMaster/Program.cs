@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using System.Windows.Forms;
 
 namespace RatioMaster {
@@ -6,6 +7,8 @@ namespace RatioMaster {
 
     [STAThread]
     internal static void Main() {
+      ServicePointManager.SecurityProtocol |= SecurityProtocolType.Tls12;
+
       if (!SingleInstance.TryEnter()) {
         MessageBox.Show(AppInfo.Name + " is already running.", AppInfo.Name,
           MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

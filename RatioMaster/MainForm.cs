@@ -273,7 +273,7 @@ namespace RatioMaster {
         reg.SetValue("ProxyType", rmData.comboProxyType.SelectedItem, RegistryValueKind.String);
         reg.SetValue("ProxyAdress", rmData.textProxyHost.Text, RegistryValueKind.String);
         reg.SetValue("ProxyUser", rmData.textProxyUser.Text, RegistryValueKind.String);
-        reg.SetValue("ProxyPass", rmData.textProxyPass.Text, RegistryValueKind.String);
+        reg.SetValue("ProxyPass", ProtectedSettings.Protect(rmData.textProxyPass.Text), RegistryValueKind.String);
         reg.SetValue("ProxyPort", rmData.textProxyPort.Text, RegistryValueKind.String);
 
         // Random value on next
@@ -376,7 +376,7 @@ namespace RatioMaster {
       AppendItem(aXmlDoc, aXmlElement, data.checkRequestScrap.Checked.ToString(), "UseScrape");
       AppendItem(aXmlDoc, aXmlElement, data.comboProxyType.SelectedItem.ToString(), "ProxyType");
       AppendItem(aXmlDoc, aXmlElement, data.textProxyUser.Text, "ProxyUser");
-      AppendItem(aXmlDoc, aXmlElement, data.textProxyPass.Text, "ProxyPass");
+      AppendItem(aXmlDoc, aXmlElement, ProtectedSettings.Protect(data.textProxyPass.Text), "ProxyPass");
       AppendItem(aXmlDoc, aXmlElement, data.textProxyHost.Text, "ProxyHost");
       AppendItem(aXmlDoc, aXmlElement, data.textProxyPort.Text, "ProxyPort");
       AppendItem(aXmlDoc, aXmlElement, data.checkRandomUpload.Checked.ToString(), "NextUpdateUpload");
@@ -451,7 +451,7 @@ namespace RatioMaster {
         ((RM) tab.SelectedTab.Controls[0]).checkRequestScrap.Checked = bool.Parse(node["UseScrape"].InnerText);
         ((RM) tab.SelectedTab.Controls[0]).comboProxyType.SelectedItem = node["ProxyType"].InnerText;
         ((RM) tab.SelectedTab.Controls[0]).textProxyUser.Text = node["ProxyUser"].InnerText;
-        ((RM) tab.SelectedTab.Controls[0]).textProxyPass.Text = node["ProxyPass"].InnerText;
+        ((RM) tab.SelectedTab.Controls[0]).textProxyPass.Text = ProtectedSettings.Unprotect(node["ProxyPass"].InnerText);
         ((RM) tab.SelectedTab.Controls[0]).textProxyHost.Text = node["ProxyHost"].InnerText;
         ((RM) tab.SelectedTab.Controls[0]).textProxyPort.Text = node["ProxyPort"].InnerText;
         ((RM) tab.SelectedTab.Controls[0]).checkRandomUpload.Checked = bool.Parse(node["NextUpdateUpload"].InnerText);

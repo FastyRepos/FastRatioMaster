@@ -570,6 +570,40 @@
 
         #endregion
 
+        #region qBittorrent
+
+        case "qBittorrent 5.1.0": {
+          client.Name = "qBittorrent 5.1.0";
+          client.HttpProtocol = "HTTP/1.1";
+          client.HashUpperCase = false;
+          client.Key = GenerateIdString("hex", 8, false, true);
+          client.Headers =
+            "Host: {host}\r\nUser-Agent: qBittorrent/5.1.0\r\nAccept-Encoding: gzip\r\nConnection: close\r\n";
+          client.PeerID = "-qB5100-" + GenerateIdString("alphanumeric", 12, false);
+          client.Query =
+            "info_hash={infohash}&peer_id={peerid}&port={port}&uploaded={uploaded}&downloaded={downloaded}&left={left}&corrupt=0&key={key}{event}&numwant={numwant}&compact=1&no_peer_id=1";
+          client.DefNumWant = 200;
+          client.ProcessName = "qbittorrent";
+          break;
+        }
+
+        case "qBittorrent 4.6.7": {
+          client.Name = "qBittorrent 4.6.7";
+          client.HttpProtocol = "HTTP/1.1";
+          client.HashUpperCase = false;
+          client.Key = GenerateIdString("hex", 8, false, true);
+          client.Headers =
+            "Host: {host}\r\nUser-Agent: qBittorrent/4.6.7\r\nAccept-Encoding: gzip\r\nConnection: close\r\n";
+          client.PeerID = "-qB4670-" + GenerateIdString("alphanumeric", 12, false);
+          client.Query =
+            "info_hash={infohash}&peer_id={peerid}&port={port}&uploaded={uploaded}&downloaded={downloaded}&left={left}&corrupt=0&key={key}{event}&numwant={numwant}&compact=1&no_peer_id=1";
+          client.DefNumWant = 200;
+          client.ProcessName = "qbittorrent";
+          break;
+        }
+
+        #endregion
+
         #region ABC
 
         case "ABC 3.1": {

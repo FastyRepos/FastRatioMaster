@@ -12,18 +12,18 @@ Maintainer: **FastLife** (`FastyRepos/FastRatioMaster`). No third-party updater 
 
 ### Toolchain (already installed in the VM image)
 Built on Linux with **Mono**: `mono` 6.12 + `msbuild` 16.10 (official mono-project apt repo)
-and `libgdiplus` (WinForms/GDI+). These are baked into the VM. There are **no NuGet package
-dependencies**. The startup update script is a no-op restore (kept for compatibility with
-`make.bat` / CI-style commands).
+and `libgdiplus` (WinForms/GDI+). These are baked into the VM. The only NuGet dependency is
+`Microsoft.NETFramework.ReferenceAssemblies` (build-time targeting pack, so machines without
+the .NET 4.7.2 Developer Pack can still compile). Restore is required before build.
 
 ### Restore / build / run
-- Restore (optional, no packages): `msbuild RatioMaster.sln /t:restore /p:RestorePackagesConfig=true`
+- Restore: `msbuild RatioMaster.sln /t:restore /p:RestorePackagesConfig=true`
 - Build (Release, mirrors `make.bat`): `msbuild RatioMaster.sln /t:Rebuild /p:DebugType=None /p:Configuration=Release`
   Output: `RatioMaster/bin/RatioMaster.exe`
 - Run on Windows: double-click / run `RatioMaster.exe` (needs .NET Framework 4.7.2+).
 - Run on Linux (best-effort GUI under Mono): `DISPLAY=:1 mono RatioMaster/bin/RatioMaster.exe`
 - No separate linter or test suite; compiler warnings act as lint.
-  CI (`.github/workflows/auto-build.yml`) builds on `windows-2022`.
+  CI (`.github/workflows/auto-build.yml`) builds on `windows-2022` for `main` (push/PR) and `workflow_dispatch`.
 
 ### Local helpers
 - `AppInfo.cs` — app name/title, About, site link, “no auto-update” message

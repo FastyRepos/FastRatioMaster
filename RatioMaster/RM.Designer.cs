@@ -732,7 +732,7 @@ namespace RatioMaster
       this.fileSize.Name = "fileSize";
       this.fileSize.Size = new System.Drawing.Size(48, 20);
       this.fileSize.TabIndex = 17;
-      this.fileSize.Text = "0";
+      this.fileSize.Text = "100";
       // 
       // cmbVersion
       // 
@@ -762,6 +762,7 @@ namespace RatioMaster
       this.cmbClient.IntegralHeight = false;
       this.cmbClient.Items.AddRange(new object[] {
             "uTorrent",
+            "qBittorrent",
             "BitComet",
             "Azureus",
             "Vuze",
@@ -817,7 +818,7 @@ namespace RatioMaster
       this.uploadRate.Name = "uploadRate";
       this.uploadRate.Size = new System.Drawing.Size(55, 20);
       this.uploadRate.TabIndex = 1;
-      this.uploadRate.Text = "60";
+      this.uploadRate.Text = "512";
       this.uploadRate.TextChanged += new System.EventHandler(this.uploadRate_TextChanged);
       // 
       // txtRandDownMax
@@ -854,7 +855,7 @@ namespace RatioMaster
       this.downloadRate.Name = "downloadRate";
       this.downloadRate.Size = new System.Drawing.Size(55, 20);
       this.downloadRate.TabIndex = 8;
-      this.downloadRate.Text = "25";
+      this.downloadRate.Text = "0";
       this.downloadRate.TextChanged += new System.EventHandler(this.downloadRate_TextChanged);
       // 
       // txtRandDownMin
