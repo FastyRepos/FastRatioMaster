@@ -20,7 +20,19 @@ Published builds (when available) are on this repository’s [releases](https://
 
 ## Development
 
-See `AGENTS.md` for Cloud/agent notes. On Windows with Visual Studio / MSBuild:
+See `AGENTS.md` for Cloud/agent notes.
+
+### Prerequisites (`make.bat`)
+
+- Windows
+- [Visual Studio Build Tools 2022](https://visualstudio.microsoft.com/visual-cpp-build-tools/) (or full Visual Studio) with **MSBuild**. Workload: **.NET desktop build tools**
+- Internet on the first restore (NuGet pulls `Microsoft.NETFramework.ReferenceAssemblies.net472` from nuget.org)
+
+The .NET 4.7.2 Developer Pack is **not** required to compile. `nuget.exe` is not required either (`msbuild /t:restore` handles it).
+
+To **run** `RatioMaster.exe`: .NET Framework 4.7.2+ (included on current Windows 10/11). Close the app before rebuilding, or the copy to `bin\` will fail.
+
+Then, from the repo root:
 
 ```bat
 make.bat
